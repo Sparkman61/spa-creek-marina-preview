@@ -9,7 +9,6 @@ ASSETS_SOURCE = Path('/home/chris/pitch-pipeline/01_scraped/spa-creek-marina-ass
 ROOT = Path(__file__).parent
 PUBLIC = ROOT / 'public'
 SITE = 'https://spa-creek-marina-preview.pages.dev'
-ANALYTICS_TOKEN = 'ae2ced1d53534fffb0805941f3640d7d'
 
 data = json.loads(SOURCE.read_text())
 
@@ -126,7 +125,6 @@ def shell(filename, label, description, body, og_image='assets/images/boats-2.jp
   <meta name="twitter:description" content="{esc(description)}">
   <meta name="twitter:image" content="{SITE}/{og_image}">
   <script type="application/ld+json">{jsonld()}</script>
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{{"token":"{ANALYTICS_TOKEN}"}}'></script>
 </head>
 <body class="{extra_class}">
 {header(label)}

@@ -9,7 +9,7 @@ ASSETS_SOURCE = Path('/home/chris/pitch-pipeline/01_scraped/spa-creek-marina-ass
 ROOT = Path(__file__).parent
 PUBLIC = ROOT / 'public'
 SITE = 'https://spa-creek-marina-preview.pages.dev'
-ANALYTICS_TOKEN = 'da7b6f6ed36b4721877fd1c8de100bc2'
+ANALYTICS_TOKEN = 'ae2ced1d53534fffb0805941f3640d7d'
 
 data = json.loads(SOURCE.read_text())
 

@@ -216,6 +216,7 @@ def main():
     for name, content in generated.items():
         (PUBLIC / name).write_text(content)
     (PUBLIC / 'robots.txt').write_text(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}/sitemap.xml\n')
+    (PUBLIC / '_redirects').write_text('/scan / 302\n')
     urls = '\n'.join(f'  <url><loc>{SITE}/{"" if f == "index.html" else f}</loc></url>' for f, _ in pages)
     (PUBLIC / 'sitemap.xml').write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
 

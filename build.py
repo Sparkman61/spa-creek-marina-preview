@@ -23,10 +23,10 @@ pages = [
 
 nav = [
     ('Home', 'index.html'),
-    ('About', 'index.html'),
+    ('About', '#about'),
     ('Additional Slips', 'additional-slips.html'),
     ("Pelican's Roost Rental", 'pelicans-roost-rental.html'),
-    ('Client Love', 'index.html'),
+    ('Client Love', '#client-love'),
     ('Knot10 Yacht Sales', 'knot10-yacht-sales.html'),
     ('Contact', 'contact.html'),
     ('Privacy Policy', 'privacy-policy.html'),
@@ -40,6 +40,9 @@ alts = {
 
 def esc(value):
     return html.escape(str(value), quote=True)
+
+def nav_href(href, current):
+    return f'index.html{href}' if href.startswith('#') and current != 'Home' else href
 
 def jsonld():
     payload = {
@@ -70,7 +73,7 @@ def jsonld():
 
 def header(current):
     links = ''.join(
-        f'<li><a href="{href}"' + (' aria-current="page"' if label == current else '') + f'>{esc(label)}</a></li>'
+        f'<li><a href="{nav_href(href, current)}"' + (' aria-current="page"' if label == current else '') + f'>{esc(label)}</a></li>'
         for label, href in nav
     )
     return f'''<a class="skip-link" href="#main">Skip to content</a>
@@ -86,8 +89,8 @@ def header(current):
   </div>
 </header>'''
 
-def footer():
-    links = ''.join(f'<li><a href="{href}">{esc(label)}</a></li>' for label, href in nav)
+def footer(current):
+    links = ''.join(f'<li><a href="{nav_href(href, current)}">{esc(label)}</a></li>' for label, href in nav)
     return f'''<section class="cta-strip" aria-labelledby="cta-title">
   <div class="section-inner cta-inner">
     <div><p class="eyebrow">40-foot to 50-foot boat slip rentals</p><h2 id="cta-title">Call {esc(data['phone'])} and speak to Paul about availability</h2></div>
@@ -129,7 +132,7 @@ def shell(filename, label, description, body, og_image='assets/images/boats-2.jp
 <body class="{extra_class}">
 {header(label)}
 <main id="main">{body}</main>
-{footer()}
+{footer(label)}
 <script src="js/site.js" defer></script>
 </body>
 </html>'''

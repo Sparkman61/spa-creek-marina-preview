@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://spa-creek-marina-preview.pages.dev/sitemap.xml

@@ -11,6 +11,7 @@ PUBLIC = ROOT / 'public'
 SITE = 'https://spa-creek-marina-preview.pages.dev'
 
 data = json.loads(SOURCE.read_text())
+ORIGINAL_SITE_URL = data['source_url']
 
 pages = [
     ('index.html', 'Home'),
@@ -130,6 +131,7 @@ def shell(filename, label, description, body, og_image='assets/images/boats-2.jp
   <script type="application/ld+json">{jsonld()}</script>
 </head>
 <body class="{extra_class}">
+<div class="concept-banner">📋 This is a free concept redesign — {esc(data['business_name'])}'s actual site is at <a href="{esc(ORIGINAL_SITE_URL)}" target="_blank" rel="noopener">{esc(ORIGINAL_SITE_URL.removeprefix('https://').removeprefix('http://').rstrip('/'))}</a></div>
 {header(label)}
 <main id="main">{body}</main>
 {footer(label)}

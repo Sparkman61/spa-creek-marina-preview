@@ -25,6 +25,8 @@ h1, h2, h3 { font-family: var(--serif); line-height: 1.08; text-wrap: balance; }
 h1 { font-size: clamp(2.75rem, 6vw, 5.5rem); }
 h2 { font-size: clamp(2rem, 4vw, 3.6rem); }
 h3 { font-size: 1.25rem; }
+.concept-banner { position: relative; z-index: 100; padding: .65rem 1rem; border-bottom: 1px solid #eadb8a; color: #2b250d; background: #fff3bf; text-align: center; font: 700 .9rem/1.45 var(--sans); }
+.concept-banner a { color: var(--primary); font-weight: 900; }
 .skip-link { position: fixed; z-index: 1000; top: 8px; left: 8px; padding: .7rem 1rem; background: var(--white); color: var(--primary); border-radius: var(--radius); transform: translateY(-150%); }
 .skip-link:focus { transform: none; }
 
